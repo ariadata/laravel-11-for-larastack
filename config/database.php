@@ -23,7 +23,7 @@ return [
     | Database Connections
     |--------------------------------------------------------------------------
     |
-    | Below are all of the database connections defined for your application.
+    | Below are all the database connections defined for your application.
     | An example configuration is provided for each database system which
     | is supported by Laravel. You're free to add / remove connections.
     |
@@ -33,23 +33,23 @@ return [
 
         'sqlite' => [
             'driver' => 'sqlite',
-            'url' => env('DB_URL'),
-            'database' => env('DB_DATABASE', database_path('database.sqlite')),
+            'url' => env('SQLITE_DB_URL'),
+            'database' => env('SQLITE_DB_NAME', database_path('database.sqlite')),
             'prefix' => '',
-            'foreign_key_constraints' => env('DB_FOREIGN_KEYS', true),
+            'foreign_key_constraints' => env('SQLITE_DB_FOREIGN_KEYS', true),
         ],
 
         'mysql' => [
             'driver' => 'mysql',
-            'url' => env('DB_URL'),
-            'host' => env('DB_HOST', '127.0.0.1'),
-            'port' => env('DB_PORT', '3306'),
-            'database' => env('DB_DATABASE', 'laravel'),
-            'username' => env('DB_USERNAME', 'root'),
-            'password' => env('DB_PASSWORD', ''),
-            'unix_socket' => env('DB_SOCKET', ''),
-            'charset' => env('DB_CHARSET', 'utf8mb4'),
-            'collation' => env('DB_COLLATION', 'utf8mb4_unicode_ci'),
+            'url' => env('MYSQL_DB_URL'),
+            'host' => env('MYSQL_DB_HOST', '127.0.0.1'),
+            'port' => env('MYSQL_DB_PORT', '3306'),
+            'database' => env('MYSQL_DB_NAME', 'larastack'),
+            'username' => env('MYSQL_DB_USER', 'user'),
+            'password' => env('MYSQL_DB_PASS', 'pass'),
+            'unix_socket' => env('MYSQL_DB_SOCKET', ''),
+            'charset' => env('MYSQL_DB_CHARSET', 'utf8mb4'),
+            'collation' => env('MYSQL_DB_COLLATION', 'utf8mb4_unicode_ci'),
             'prefix' => '',
             'prefix_indexes' => true,
             'strict' => true,
@@ -61,15 +61,15 @@ return [
 
         'mariadb' => [
             'driver' => 'mariadb',
-            'url' => env('DB_URL'),
-            'host' => env('DB_HOST', '127.0.0.1'),
-            'port' => env('DB_PORT', '3306'),
-            'database' => env('DB_DATABASE', 'laravel'),
-            'username' => env('DB_USERNAME', 'root'),
-            'password' => env('DB_PASSWORD', ''),
-            'unix_socket' => env('DB_SOCKET', ''),
-            'charset' => env('DB_CHARSET', 'utf8mb4'),
-            'collation' => env('DB_COLLATION', 'utf8mb4_unicode_ci'),
+            'url' => env('MARIADB_DB_URL'),
+            'host' => env('MARIADB_DB_HOST', '127.0.0.1'),
+            'port' => env('MARIADB_DB_PORT', '3306'),
+            'database' => env('MARIADB_DB_NAME', 'larastack'),
+            'username' => env('MARIADB_DB_USER', 'user'),
+            'password' => env('MARIADB_DB_PASS', 'pass'),
+            'unix_socket' => env('MARIADB_DB_SOCKET', ''),
+            'charset' => env('MARIADB_DB_CHARSET', 'utf8mb4'),
+            'collation' => env('MARIADB_DB_COLLATION', 'utf8mb4_unicode_ci'),
             'prefix' => '',
             'prefix_indexes' => true,
             'strict' => true,
@@ -81,28 +81,40 @@ return [
 
         'pgsql' => [
             'driver' => 'pgsql',
-            'url' => env('DB_URL'),
-            'host' => env('DB_HOST', '127.0.0.1'),
-            'port' => env('DB_PORT', '5432'),
-            'database' => env('DB_DATABASE', 'laravel'),
-            'username' => env('DB_USERNAME', 'root'),
-            'password' => env('DB_PASSWORD', ''),
-            'charset' => env('DB_CHARSET', 'utf8'),
+            'url' => env('PGSQL_DB_URL'),
+            'host' => env('PGSQL_DB_HOST', '127.0.0.1'),
+            'port' => env('PGSQL_DB_PORT', '5432'),
+            'database' => env('PGSQL_DB_NAME', 'larastack'),
+            'username' => env('PGSQL_DB_USER', 'user'),
+            'password' => env('PGSQL_DB_PASS', 'pass'),
+            'charset' => env('PGSQL_DB_CHARSET', 'utf8'),
             'prefix' => '',
             'prefix_indexes' => true,
             'search_path' => 'public',
             'sslmode' => 'prefer',
         ],
 
+        'mongo' => [
+            'driver' => 'mongodb',
+            'host' => env('MONGO_DB_HOST', null),
+            'port' => env('MONGO_DB_PORT', 27017),
+            'database' => env('MONGO_DB_NAME', 'larastack'),
+            'username' => env('MONGO_DB_USER', 'user'),
+            'password' => env('MONGO_DB_PASS', 'pass'),
+            'options' => [
+                'database' => env('DB_AUTHENTICATION_DATABASE', 'admin'), // required with Mongo 3+
+            ],
+        ],
+
         'sqlsrv' => [
             'driver' => 'sqlsrv',
-            'url' => env('DB_URL'),
-            'host' => env('DB_HOST', 'localhost'),
-            'port' => env('DB_PORT', '1433'),
-            'database' => env('DB_DATABASE', 'laravel'),
-            'username' => env('DB_USERNAME', 'root'),
-            'password' => env('DB_PASSWORD', ''),
-            'charset' => env('DB_CHARSET', 'utf8'),
+            'url' => env('SQLSRV_DB_URL'),
+            'host' => env('SQLSRV_DB_HOST', 'localhost'),
+            'port' => env('SQLSRV_DB_PORT', '1433'),
+            'database' => env('SQLSRV_DB_NAME', 'larastack'),
+            'username' => env('SQLSRV_DB_USER', 'user'),
+            'password' => env('SQLSRV_DB_PASS', 'pass'),
+            'charset' => env('SQLSRV_DB_CHARSET', 'utf8'),
             'prefix' => '',
             'prefix_indexes' => true,
             // 'encrypt' => env('DB_ENCRYPT', 'yes'),
@@ -149,7 +161,7 @@ return [
 
         'default' => [
             'url' => env('REDIS_URL'),
-            'host' => env('REDIS_HOST', '127.0.0.1'),
+            'host' => env('REDIS_HOST', null),
             'username' => env('REDIS_USERNAME'),
             'password' => env('REDIS_PASSWORD'),
             'port' => env('REDIS_PORT', '6379'),
@@ -158,7 +170,7 @@ return [
 
         'cache' => [
             'url' => env('REDIS_URL'),
-            'host' => env('REDIS_HOST', '127.0.0.1'),
+            'host' => env('REDIS_HOST', null),
             'username' => env('REDIS_USERNAME'),
             'password' => env('REDIS_PASSWORD'),
             'port' => env('REDIS_PORT', '6379'),

@@ -94,7 +94,7 @@ return [
             'sslmode' => 'prefer',
         ],
 
-        'mongo' => [
+        'mongodb' => [
             'driver' => 'mongodb',
             'host' => env('MONGO_DB_HOST', null),
             'port' => env('MONGO_DB_PORT', 27017),
@@ -119,6 +119,13 @@ return [
             'prefix_indexes' => true,
             // 'encrypt' => env('DB_ENCRYPT', 'yes'),
             // 'trust_server_certificate' => env('DB_TRUST_SERVER_CERTIFICATE', 'false'),
+        ],
+
+        'phpunit_db' => [
+            'driver' => 'sqlite',
+            'database' => database_path('phpunit_database.sqlite'),
+            'prefix' => '',
+            'foreign_key_constraints' => env('PHPUNIT_DB_FOREIGN_KEYS', true),
         ],
 
     ],

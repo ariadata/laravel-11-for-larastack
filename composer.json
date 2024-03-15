@@ -9,10 +9,12 @@
         "ext-pdo": "*",
         "laravel/framework": "^11.0",
         "laravel/horizon": "^5.23",
-        "laravel/tinker": "^2.9"
+        "laravel/tinker": "^2.9",
+        "mongodb/laravel-mongodb": "^4.2"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
+        "larastan/larastan": "^2.9",
         "laravel/pint": "^1.13",
         "laravel/sail": "^1.26",
         "mockery/mockery": "^1.6",
